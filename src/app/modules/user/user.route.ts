@@ -3,10 +3,24 @@ import { UserController } from './user.controller';
 
 const router = express.Router();
 
-router.get('/users', UserController.getAllUsers);
-router.get('/users/:userId', UserController.getSingleUsers);
-router.post('/users', UserController.createUser);
-router.put('/users/:userId', UserController.UpdateUser);
-router.delete('/users/:userId', UserController.deleteUser);
+router
+  .route('/')
+  .post(UserController.createUser)
+  .get(UserController.getAllUsers);
 
-export const StudentRoutes = router;
+router
+  .route('/:userId')
+  .get(UserController.getSingleUsers)
+  .put(UserController.UpdateUser)
+  .delete(UserController.deleteUser);
+
+router
+  .route('/:userId/orders')
+  .post(UserController.createUserOrder)
+  .get(UserController.getAllOrders);
+
+router
+  .route('/:userId/orders/total-price')
+  .get(UserController.getOrderTotalPrice);
+
+export const userRoutes = router;

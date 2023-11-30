@@ -63,20 +63,18 @@ const userSchema = new Schema<TUser>({
     city: { type: String, required: true },
     country: { type: String, required: true },
   },
+  orders: [
+    {
+      productName: { type: String, required: true },
+      price: { type: Number, required: true },
+      quantity: { type: Number, required: true },
+    },
+  ],
 });
 
 // pre save middleware/hook
 userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(
-    this.password,
-    Number(config.bcrypt_salt_rounds),
-  );
-  next();
-});
-
-// post save middleware/hook
-userSchema.post('save', async function (doc, next) {
-  doc.password = await bcrypt.hash(
     this.password,
     Number(config.bcrypt_salt_rounds),
   );
