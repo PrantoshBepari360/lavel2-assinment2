@@ -16,7 +16,7 @@ router
 
 router
   .route('/:userId/orders')
-  .post(UserController.createUserOrder)
+  .put(UserController.createUserOrder)
   .get(UserController.getAllOrders);
 
 router

@@ -78,3 +78,12 @@ npm run start-dev
 
 5. Delete a user
    Endpoint: DELETE /api/users/:userId
+
+6. Add New Product in Orders
+   Endpoint: PUT /api/users/:userId/orders
+
+7. Retrieve all orders for a specific user
+   Endpoint: GET /api/users/:userId/orders
+
+8. Calculate Total Price of Orders for a Specific User
+   Endpoint: GET /api/users/:userId/orders/total-price

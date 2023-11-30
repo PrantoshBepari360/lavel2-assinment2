@@ -23,7 +23,7 @@ const userValidationSchema = z.object({
       price: z.number(),
       quantity: z.number(),
     }),
-  ),
+  ).optional(),
 });
 
 export default userValidationSchema;
